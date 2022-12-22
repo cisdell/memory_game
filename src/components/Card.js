@@ -1,28 +1,22 @@
-import React from 'react'
+import React from "react";
+import './Card.css'
+function Card({ card, handleChoice }) {
+  const handleClick = () => {
+    handleChoice(card)
 
-function Card({cards}) {
-  //console.log(cards)
-  const cardItems = cards.map((card) =>
-    <div className="card" key={card.id}>
-      <img className="front" src={card.src} alt="card front" />
-      <img className="back" src="/img/cover.png" alt="card back" />
-    </div>
-  )
+  }
 
   return (
-    <div className="card-grid">
-      {cardItems}
+    <div className="card">
+      <div>
+        <img className="front" src={card.src} alt="card front" />
+        <img className="back"
+        src="/img/cover.png"
+        onClick={handleClick}
+        alt="card back" />
+      </div>
     </div>
-  )
+  );
 }
 
-export default Card
-
-// {cards.map(card => (
-//   <div className="card" key={card.id}>
-//     <div>
-//       <img className="front" src={card.src} alt="card front" />
-//       <img className="back" src="/img/cover.png" alt="card back" />
-//     </div>
-//   </div>
-// ))}
+export default Card;
