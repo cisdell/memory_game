@@ -1,5 +1,6 @@
 import "./App.css";
 import { useState } from 'react'
+import Card from './components/Card';
 const cardImages = [
   { src: "/img/helmet-1.png" },
   { src: "/img/potion-1.png" },
@@ -23,12 +24,13 @@ function App() {
     setTurns(0);
   }
 
-  console.log(cards, turns)
+  // console.log(cards, turns)
 
   return (
     <div className="App">
       <h1>Magic Match</h1>
       <button onClick={shuffleCards}>New Game</button>
+      <Card className="card-grid" cards={cards}/>
     </div>
   );
 }
