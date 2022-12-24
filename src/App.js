@@ -2,12 +2,12 @@ import "./App.css";
 import { useState, useEffect } from "react";
 import Card from "./components/Card";
 const cardImages = [
-  { src: "/img/helmet-1.png", matched: false },
-  { src: "/img/potion-1.png", matched: false },
-  { src: "/img/ring-1.png", matched: false },
-  { src: "/img/scroll-1.png", matched: false },
-  { src: "/img/shield-1.png", matched: false },
-  { src: "/img/sword-1.png", matched: false },
+  { src: "/img/netscape.png", matched: false },
+  { src: "/img/sun.png", matched: false },
+  { src: "/img/dec.png", matched: false },
+  { src: "/img/lycos.png", matched: false },
+  { src: "/img/sybase.png", matched: false },
+  { src: "/img/netzero.png", matched: false },
 ];
 
 function App() {
@@ -31,9 +31,7 @@ function App() {
 
   // handle a choice
   const handleChoice = (card) => {
-
     choiceOne ? setChoiceTwo(card) : setChoiceOne(card);
-
   };
 
   //compare two cards
@@ -57,36 +55,37 @@ function App() {
     }
   }, [choiceOne, choiceTwo]);
 
-  console.log(cards)
+  console.log(cards);
 
   const resetTurn = () => {
     setChoiceOne(null);
     setChoiceTwo(null);
     setTurns((prevTurns) => prevTurns + 1);
-    setDisabled(false)
+    setDisabled(false);
   };
-  useEffect( ()=> {
+  useEffect(() => {
     shuffleCards();
     setChoiceOne(null);
     setChoiceTwo(null);
-  }, [])
+  }, []);
 
   return (
     <div className="App">
-      <h1>Magic Match</h1>
+      <h1>Memory Game</h1>
       <button onClick={shuffleCards}>New Game</button>
 
       <div className="card-grid">
         {cards.map((card) => (
-          <Card key={card.id}
-          card={card}
-          handleChoice={handleChoice}
-          flipped={card === choiceOne || card === choiceTwo || card.matched}
-          disabled={disabled}
+          <Card
+            key={card.id}
+            card={card}
+            handleChoice={handleChoice}
+            flipped={card === choiceOne || card === choiceTwo || card.matched}
+            disabled={disabled}
           />
         ))}
       </div>
-      <p className="turns">Turns: {turns} turns!</p>
+      <p className="turns">Turns: {turns} </p>
     </div>
   );
 }
